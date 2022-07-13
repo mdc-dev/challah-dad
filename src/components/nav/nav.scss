@@ -1,0 +1,33 @@
+.nav {
+    width: 100vw;
+    height: 50px;
+    display: inline-flex;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+
+    .logo {
+        margin: 16px 80px
+    }
+
+    .nav-items {
+        margin-right: 45px;
+        position: absolute;
+        right: 0;
+
+        .items {
+            display: flex;
+            justify-content: space-between;
+            width: 300px;       
+            list-style: none; 
+            position: relative;
+            right: 0;
+            color: white;
+
+            a {
+                text-decoration: none;
+                color: inherit;
+            }
+        }
+    }
+}

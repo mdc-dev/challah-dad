@@ -1,0 +1,56 @@
+.contact {
+    height: 100vh;
+    width: 69vw;
+    background-color: rgb(147, 147, 218);
+    text-align: center;
+
+        h1 {
+        padding-top: 70px;
+        font-size: 2em;
+    }
+
+    
+    .content {
+    display: inline-flex;
+    padding-left: 135px;
+
+    form {
+        display: inline-block;
+        text-align: left;
+        width: 500px;
+        font-size: 1.2em;
+        
+        input, textarea {
+            width: 100%;
+            border-radius: 5px;
+            line-height: 1.5em;
+            border: none;
+        }
+
+        button {
+            border: solid 1px black;
+            border-radius: 5px;
+            background-color: rgba(0, 255, 255, 0);
+            padding: 5px;
+            font-size: 1.1em;
+        }
+    }
+
+    .social-icons {
+        width: 150px;
+
+        ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            font-size: 3em;
+            padding-left: 0;
+
+            li {
+                margin-top: 30px;
+            }
+        }
+    }
+
+}
+}

@@ -1,0 +1,53 @@
+.order-container {
+    height: fit-content;
+    position: relative;
+    align-self: left;
+    background-image: url(../../images/bread-zoom.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 0 20px 20px 0;
+    width: 69vw;
+
+    .filter {
+        height: 100%;
+        padding-left: 135px;
+        display: inline-flex;
+        background-color: rgba(255, 255, 255, 0.767);
+        border-radius: 0 20px 20px 0;
+    }
+
+    .order {
+        width: 70%;
+        text-align: left;
+        padding-top: 50px;
+
+        h2 {
+            font-size: 2em;
+        }
+
+        p {
+            font-size: 1.1em;
+            padding-right: 35px;
+        }
+    }
+
+    .order-form {
+        padding-top: 50px;
+        width: 460px;
+        margin-top: 50px;
+        display: inline-block;
+
+        form {
+            display: inline-block;
+            text-align: left;
+            box-sizing: border-box;
+
+           .fieldset {
+                border: none;
+                width: 300px;
+                padding-left: 0;
+            } 
+        }
+        
+    }
+}
