@@ -22,10 +22,6 @@
                 position: relative;
 
                 button {
-                    -webkit-transform: rotate(90deg);
-                    color: white;
-                    background-color: rgb(204, 221, 247);
-                    border: 1px solid rgb(5, 68, 161);
                     position: absolute;
                     padding: 10px;
                     font-size: 3em;
@@ -80,6 +76,45 @@
                 top: 90px;
                 font-size: 3.4em;
                 left: 38px
+            }
+        }
+    }
+
+    @media only screen and (min-width: 1600px) {
+        .left-main {
+
+            .filter {
+               .content {
+                padding-top: 650px;
+
+                button {
+                    top: 550px;
+                    left: 5px; 
+                }
+
+                h1 {
+                    font-size: 12em;
+                }
+
+                h2 {
+                    font-size: 2em;
+                }
+            } 
+            }
+            
+        }
+
+        .right-main {
+            .main-logo {
+                margin-top: 250px;
+                height: 450px;
+                width: 450px;
+
+                h1 {
+                    top: 115px;
+                    left: 45px;
+                    font-size: 4.3em;
+                }
             }
         }
     }
