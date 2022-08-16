@@ -1,7 +1,19 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './order.scss'
 
-const Order = () => {
+function Order() {
+
+    const [loafNum, setLoafNumber] = useState(0)
+
+
+    const loafNumber = (e) => {
+        e.preventDefault();
+        console.log(loafNum)
+        setLoafNumber(parseInt(e.target.value));
+        console.log(loafNum);
+        let dropdowns = document.querySelectorAll('.num-select');
+    }
+
   return (
     <section className="order-container" id="order">
         <div className="filter">
@@ -37,13 +49,13 @@ const Order = () => {
                 <fieldset className="fieldset">
                 <label htmlFor="loaves">How many loaves would you like?</label>
                 <br />
-                    <input type="radio" value="1"/>1
-                    <input type="radio" value="2"/>2
-                    <input type="radio" value="3"/>3
-                    <input type="radio" value="4"/>4
+                    <input type="radio" value="1" name='num-radio' onClick={(e) => loafNumber(e)} />1
+                    <input type="radio" value="2" name='num-radio' onClick={(e) => loafNumber(e)} />2
+                    <input type="radio" value="3" name='num-radio' onClick={(e) => loafNumber(e)} />3
+                    <input type="radio" value="4" name='num-radio' onClick={(e) => loafNumber(e)} />4
                     <input type="radio" value="Other"/>other
                 </fieldset>
-                <fieldset className="fieldset">
+                <fieldset className="fieldset num-select hide" >
                     <label htmlFor="loaf-one">1st Loaf</label>
                     <br />
                     <select name="loaf-one" id="loaf-one">
@@ -56,7 +68,7 @@ const Order = () => {
                         <option value="GFather">GFather</option>
                     </select>
                 </fieldset>
-                <fieldset className="fieldset">
+                <fieldset className="fieldset num-select hide" >
                     <label htmlFor="loaf-two">2nd Loaf</label>
                     <br />
                     <select name="loaf-two" id="loaf-two">
@@ -69,7 +81,7 @@ const Order = () => {
                         <option value="GFather">GFather</option>
                     </select>
                 </fieldset>
-                <fieldset className="fieldset">
+                <fieldset className="fieldset num-select hide" >
                     <label htmlFor="loaf-three">3rd Loaf</label>
                     <br />
                     <select name="loaf-three" id="loaf-three">
@@ -82,7 +94,7 @@ const Order = () => {
                         <option value="GFather">GFather</option>
                     </select>
                 </fieldset>
-                <fieldset className="fieldset">
+                <fieldset className="fieldset num-select hide" >
                     <label htmlFor="loaf-four">4th Loaf</label>
                     <br />
                     <select name="loaf-four" id="loaf-four">
