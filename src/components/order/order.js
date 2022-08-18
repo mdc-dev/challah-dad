@@ -1,17 +1,23 @@
-import React, {useState} from 'react'
+import React from 'react'
 import './order.scss'
 
 function Order() {
 
-    const [loafNum, setLoafNumber] = useState(0)
+    let loafNum = 0;
 
 
     const loafNumber = (e) => {
         e.preventDefault();
-        console.log(loafNum)
-        setLoafNumber(parseInt(e.target.value));
-        console.log(loafNum);
+        loafNum = e.target.value;
         let dropdowns = document.querySelectorAll('.num-select');
+        dropdowns.forEach((drop, i) => {
+            if(i < loafNum) {
+                drop.classList.remove('hide')
+            } else {
+                drop.classList.remove('hide');
+                drop.classList.add('hide')
+            }
+        })
     }
 
   return (
@@ -53,7 +59,7 @@ function Order() {
                     <input type="radio" value="2" name='num-radio' onClick={(e) => loafNumber(e)} />2
                     <input type="radio" value="3" name='num-radio' onClick={(e) => loafNumber(e)} />3
                     <input type="radio" value="4" name='num-radio' onClick={(e) => loafNumber(e)} />4
-                    <input type="radio" value="Other"/>other
+                    <input type="radio" value="Other" name='num-radio'/>other
                 </fieldset>
                 <fieldset className="fieldset num-select hide" >
                     <label htmlFor="loaf-one">1st Loaf</label>
