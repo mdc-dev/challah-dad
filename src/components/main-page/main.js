@@ -7,9 +7,9 @@ const Main = () => {
         <div className="left-main">
             <div className="filter">
                 <div className="content">
-                <button className="order">ORDER</button>
                 <h2>THE FATHER OF THE BREAD</h2>
                 <h1>Challahdad</h1>
+                <button className="order" href="#order">ORDER</button>
                 </div>
             </div>
         </div>

@@ -1,5 +1,6 @@
 import React from 'react'
 import './order.scss'
+import emailjs from "@emailjs/browser";
 
 function Order() {
 
@@ -7,7 +8,6 @@ function Order() {
 
 
     const loafNumber = (e) => {
-        e.preventDefault();
         loafNum = e.target.value;
         let dropdowns = document.querySelectorAll('.num-select');
         dropdowns.forEach((drop, i) => {
@@ -18,6 +18,51 @@ function Order() {
                 drop.classList.add('hide')
             }
         })
+    }
+
+    const formSubmit = (e) => {
+        let number;
+        document.querySelectorAll('[name="num-radio"]').forEach(el => {
+            if(el.checked) {
+                number = el.value;
+            }
+        });
+
+        let week;
+        document.querySelectorAll('[name="week"]').forEach(el => {
+            if(el.checked) {
+                week = el.value;
+            }
+        });
+
+        let method;
+        document.querySelectorAll('[name="method"]').forEach(el => {
+            if(el.checked) {
+                method = el.value;
+            }
+        });
+
+        emailjs.send(
+            "service_lu4i6mi","template_jlsydmc",
+            {
+                name: document.querySelector("#name").value,
+                phone: document.querySelector("#phone").value,
+                email: document.querySelector("#email").value,
+                instagram: document.querySelector("#instagram").value,
+                loafs: number,
+                loafOne: document.querySelector("#loaf-one").value,
+                loafTwo: document.querySelector("#loaf-two").value,
+                loafThree: document.querySelector("#loaf-three").value,
+                loafFour: document.querySelector("#loaf-four").value,
+                glutenFreeType: document.querySelector("#gf").value,
+                week: week,
+                method: method,
+                date: document.querySelector("#date").value,
+                subscription: document.querySelector("#weekly").value
+
+            },
+            "WBWkjDLfzSQMfmT-e"
+          );
     }
 
   return (
@@ -38,19 +83,19 @@ function Order() {
             <form action="submit">
                 <label htmlFor="name">Name</label>
                 <br />
-                <input type="text" className="name" />
+                <input type="text" className="name" id="name" />
                 <br />
                 <label htmlFor="phone">Phone</label>
                 <br />
-                <input type="phone" className="phone" />
+                <input type="phone" className="phone" id="phone"/>
                 <br />
                 <label htmlFor="email">Email</label>
                 <br />
-                <input type="email" className="email" />
+                <input type="email" className="email" id="email"/>
                 <br />
                 <label htmlFor="instagram">instagram</label>
                 <br />
-                <input type="text" className="instagram" />
+                <input type="text" className="instagram" id="instagram"/>
                 <br />
                 <fieldset className="fieldset">
                 <label htmlFor="loaves">How many loaves would you like?</label>
@@ -59,7 +104,6 @@ function Order() {
                     <input type="radio" value="2" name='num-radio' onClick={(e) => loafNumber(e)} />2
                     <input type="radio" value="3" name='num-radio' onClick={(e) => loafNumber(e)} />3
                     <input type="radio" value="4" name='num-radio' onClick={(e) => loafNumber(e)} />4
-                    <input type="radio" value="Other" name='num-radio'/>other
                 </fieldset>
                 <fieldset className="fieldset num-select hide" >
                     <label htmlFor="loaf-one">1st Loaf</label>
@@ -78,6 +122,7 @@ function Order() {
                     <label htmlFor="loaf-two">2nd Loaf</label>
                     <br />
                     <select name="loaf-two" id="loaf-two">
+                        <option value="none">none</option>
                         <option value="saltydad">saltydad</option>
                         <option value="the funcle">the funcle</option>
                         <option value="za'dad">za'dad</option>
@@ -91,6 +136,7 @@ function Order() {
                     <label htmlFor="loaf-three">3rd Loaf</label>
                     <br />
                     <select name="loaf-three" id="loaf-three">
+                        <option value="none">none</option>
                         <option value="saltydad">saltydad</option>
                         <option value="the funcle">the funcle</option>
                         <option value="za'dad">za'dad</option>
@@ -104,6 +150,7 @@ function Order() {
                     <label htmlFor="loaf-four">4th Loaf</label>
                     <br />
                     <select name="loaf-four" id="loaf-four">
+                        <option value="none">none</option>
                         <option value="saltydad">saltydad</option>
                         <option value="the funcle">the funcle</option>
                         <option value="za'dad">za'dad</option>
@@ -116,7 +163,7 @@ function Order() {
                 <fieldset className="fieldset">
                     <label htmlFor="topping">If ordering GFather (gluten free) please specify which topping you'd like.</label>
                     <br />
-                    <select name="loaf-one" id="loaf-one">
+                    <select name="loaf-one" id="gf">
                         <option value="n/a">n/a</option>
                         <option value="plain">plain (no topping)</option>
                         <option value="salt">salt</option>
@@ -130,16 +177,16 @@ function Order() {
                 <fieldset className="fieldset">
                     <label htmlFor="week">What week are you ordering for?</label>
                     <br />
-                        <input type="radio" value="1"/>first
-                        <input type="radio" value="2"/>second
-                        <input type="radio" value="3"/>third
-                        <input type="radio" value="4"/>fourth
+                        <input type="radio" name="week" value="1"/>first
+                        <input type="radio" name="week" value="2"/>second
+                        <input type="radio" name="week" value="3"/>third
+                        <input type="radio" name="week" value="4"/>fourth
                 </fieldset> 
                 <fieldset className="fieldset">
                     <label htmlFor="method">Pickup (Culver City) or delivery (within five miles from culver city) for an additional $10 fee?</label>
                     <br />
-                        <input type="radio" value="pickup"/>Pickup
-                        <input type="radio" value="delivery"/>Delivery
+                        <input type="radio" name="method" value="pickup"/>Pickup
+                        <input type="radio" name="method" value="delivery"/>Delivery
                 </fieldset>  
                 <fieldset className="fieldset">
                     <label htmlFor="date">Preferred pickup/delivery date</label>
@@ -168,6 +215,8 @@ function Order() {
                     <input type="checkbox" name="acknowledgement" id="acknowledgement" />
                 </fieldset> 
             </form>
+
+            <button className="submit-form submit-btn" onClick={(e) => formSubmit(e)}>Submit</button>
         </div>
         </div>
     </section>
