@@ -1,7 +1,9 @@
 import React from 'react'
+import axios from 'axios'
 import './about.scss'
 
-const About = () => {
+function About() {
+  axios.get()
   return (
     <section className="about" id="about">
         <div className="tile-container">
